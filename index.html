@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+   <div id=container >
+      
+    <h1 class=glow>Tic Tac Toe</h1>
+    <label for="p1" class="lb glow">Player 1 Name <input type="text" id=p1i class=ilb placeholder="Enter Your Name" required></label> 
+    <label for="p2" class="lb glow">Player 2 Name  <input type="text" id=p2i class=ilb placeholder="Enter Your Name" required></label>
+       
+      
+      
+<br>
+       <button id=start class="btn" type="submit">Start</button>
+       <button id=restart class="btn">Restart</button>
+
+    <div id=grid class="glow" >
+        <div id=winner></div>
+        <div class="tile glow " data-index="0"></div>
+        <div class="tile glow" data-index="1"></div>
+        <div class="tile glow" data-index="2"></div>
+        <div class="tile glow" data-index="3"></div>
+        <div class="tile glow" data-index="4"></div>
+        <div class="tile glow" data-index="5"></div>
+        <div class="tile glow" data-index="6"></div>
+        <div class="tile glow" data-index="7"></div>
+        <div class="tile glow" data-index="8"></div>
+        
+    </div>
+    
+
+   </div>
+
+</body>
+<script src="script.js"></script>
+</html>
