@@ -2,34 +2,29 @@ const tile = document.querySelectorAll(".tile");
 const ww = document.querySelector("#winner");
 winner = 0;
 counter = 0;
-counter2=0;
+counter2 = 0;
 
-document.querySelector("#start").addEventListener("click",function () {
+document.querySelector("#start").addEventListener("click", function () {
   var p1 = document.getElementById("p1i").value;
   var p2 = document.getElementById("p2i").value;
-  if (p1 =='' || p2=='')
-  {
+  if (p1 == "" || p2 == "") {
     alert("Enter the names of players");
-  }
-else{
-  document.querySelector("#restart").addEventListener("click", function (e) {
-    for (i = 0; i < 9; i++) {
-      tile[i].textContent = "";
-      tile[i].style.backgroundColor = "rgba(2, 0, 0, 0.356)";
-      winner = 0;
-    }
-    ww.style.visibility="hidden";
-    counter = 0;
-    counter2=0;
-    console.clear();
+  } else {
+    document.querySelector("#restart").addEventListener("click", function (e) {
+      for (i = 0; i < 9; i++) {
+        tile[i].textContent = "";
+        tile[i].style.backgroundColor = "rgba(2, 0, 0, 0.356)";
+        winner = 0;
+      }
+      ww.style.visibility = "hidden";
+      counter = 0;
+      counter2 = 0;
+      console.clear();
+      add_event();
+    });
     add_event();
-  });
-  add_event(); }
-
+  }
 });
-
-
-
 
 function add_event() {
   for (i = 0; i < 9; i++) {
@@ -42,117 +37,66 @@ function ae(e) {
     if (counter == 0) {
       this.textContent = "X";
       counter = 1;
-      counter2+=1;
-      console.log(counter2);
-    
+      counter2 += 1;
     } else if (counter == 1) {
       this.textContent = "O";
       counter = 0;
-      counter2+=1;
-      console.log(counter2);
-    
+      counter2 += 1;
     }
 
     const check = win_check();
     p1 = document.getElementById("p1i").value;
     p2 = document.getElementById("p2i").value;
     if (check == "X") {
-     ww.style.visibility="visible";
-      ww.textContent=`Winner is ${p1}`;
+      ww.style.visibility = "visible";
+      ww.textContent = `Winner is ${p1}`;
     } else if (check == "O") {
-     ww.style.visibility="visible";
-      ww.textContent=`Winner is ${p2}`;
-    } else if(check =='1')
-    {
-  ww.style.visibility="visible";
-      ww.textContent=`DRAW`;
+      ww.style.visibility = "visible";
+      ww.textContent = `Winner is ${p2}`;
+    } else if (check == "1") {
+      ww.style.visibility = "visible";
+      ww.textContent = `DRAW`;
     }
   }
   this.removeEventListener("click", ae);
 }
 
 function win_check() {
- 
-  
-  if (
-    tile[0].textContent === tile[1].textContent &&
-    tile[0].textContent === tile[2].textContent &&
-    tile[0].textContent !== ""
-  ) {
-    tile[0].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[1].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[2].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[0].textContent;
-  } else if (
-    tile[3].textContent === tile[4].textContent &&
-    tile[3].textContent === tile[5].textContent &&
-    tile[5].textContent !== ""
-  ) {
-    tile[3].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[4].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[5].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[3].textContent;
-  } else if (
-    tile[6].textContent === tile[7].textContent &&
-    tile[6].textContent === tile[8].textContent &&
-    tile[8].textContent !== ""
-  ) {
-    tile[6].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[7].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[8].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[6].textContent;
-  } else if (
-    tile[0].textContent === tile[3].textContent &&
-    tile[0].textContent === tile[6].textContent &&
-    tile[6].textContent !== ""
-  ) {
-    tile[3].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[0].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[6].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[0].textContent;
-  } else if (
-    tile[1].textContent === tile[4].textContent &&
-    tile[1].textContent === tile[7].textContent &&
-    tile[7].textContent !== ""
-  ) {
-    tile[7].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[4].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[1].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[1].textContent;
-  } else if (
-    tile[2].textContent === tile[5].textContent &&
-    tile[5].textContent === tile[8].textContent &&
-    tile[8].textContent !== ""
-  ) {
-    tile[2].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[5].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[8].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[2].textContent;
-  } else if (
-    tile[0].textContent === tile[4].textContent &&
-    tile[0].textContent === tile[8].textContent &&
-    tile[8].textContent !== ""
-  ) {
-    tile[0].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[4].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[8].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[0].textContent;
-  } else if (
-    tile[2].textContent === tile[4].textContent &&
-    tile[6].textContent === tile[2].textContent &&
-    tile[2].textContent !== ""
-  ) {
-    tile[2].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[4].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    tile[6].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
-    return tile[2].textContent;
-  } 
-  else if(counter2==9)
-  {
+  x = 0;
+
+  const arr = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  i = 0;
+  while (i < 8) {
+    if (
+      tile[arr[i][0]].textContent === tile[arr[i][1]].textContent &&
+      tile[arr[i][0]].textContent === tile[arr[i][2]].textContent &&
+      tile[arr[i][0]].textContent !== ""
+    ) {
+      tile[arr[i][0]].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
+      tile[arr[i][1]].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
+      tile[arr[i][2]].style.backgroundColor = "rgba(192, 58, 226, 0.603)";
+
+      x = `${tile[arr[i][0]].textContent}`;
+      break;
+    } else {
+      i++;
+      x = 0;
+    }
+  }
+  if (x != 0) {
+    return x;
+  } else if (counter2 == 9) {
     return 1;
+  } else {
+    return 0;
   }
-  else {
-    return 0;}
-  }
-
-
+}
